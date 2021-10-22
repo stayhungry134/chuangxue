@@ -1,0 +1,34 @@
+{# 继承自 base.htnl 模板#}
+{% extends 'base.html' %}
+
+{# 引入静态文件 #}
+{% load static %}
+
+{# 网页标题 #}
+{% block title %}
+    文章列表
+{% endblock %}
+
+{# css 文件 #}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/article/article-list.css' %}">
+{% endblock %}
+
+{# 主区域内容 #}
+{% block content %}
+        <main class="main col-12">
+        {% for article in articles %}
+            <article class="card col-5 float-left">
+                <h3 class="card-header">
+                    {{ article.art_title }}<small class="text-black-50"> {{ article.art_author }}</small>
+                </h3>
+                <p class="card-body">
+                    {{ article.art_body|slice:'100' }}
+                </p>
+                <div class="card-footer text-right">
+                    <a href="{% url 'article:article_detail' article.id %}" class="btn btn-primary">文章详情</a>
+                </div>
+            </article>
+        {% endfor %}
+    </main>
+{% endblock %}

@@ -1,0 +1,117 @@
+{# 引入静态文件 #}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人信息</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-4.5.2/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/userprofile/user_pro.css' %}">
+    <link rel="stylesheet" href="{% static 'iconfont/iconfont.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <main class="main container">
+        <h1 class="text-center">
+            个人信息
+        </h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="card col-10">
+                {% if user.user_img %}
+                    <img src="{% static 'image/user.png' %}" class="card-img-top rounded-circle" alt="..."  style="width: 10rem;">
+                {% else %}
+                    <img src="{% static 'image/user.png' %}" class="card-img-top rounded-circle" alt="..."  style="width: 10rem;">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ user.username }}</h5>
+                </div>
+                <div class="card-booter">
+                    <label for="file-upload" class="btn btn-primary float-right" id="choise">
+                        更换头像
+                    </label>
+                    <input name="user_img" id="user_img" type="file" style="display: none">
+                </div>
+              </div>
+            <div class="form-row">
+                <label for="" class="form-control col-2 text-center">
+                    学号:
+                </label>
+                <div class="form-group col-8 offset-1">
+                    {{ user.student_id }}
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="" class="form-control col-2 text-center">
+                    用户名：
+                </label>
+                <div class="form-group col-8 offset-1">
+                    {{ user.username }}！
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="" class="form-control col-2 text-center">
+                    邮箱：
+                </label>
+                <div class="form-group col-8 offset-1">
+                    {{ user.email }}
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="" class="form-control col-2 text-center">
+                    姓名：
+                </label>
+                <div class="form-group col-8 offset-1">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="{{ user.name }}">
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="" class="form-control col-2 text-center">
+                    性别：
+                </label>
+                <div class="form-group col-8 offset-1">
+                    <select name="sex" id="sex" class="form-control">
+                        <option selected>{{ user_sex }}</option>
+                        {% for sex in sex_items %}
+                            <option>{{ sex.1 }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="" class="form-control col-2 text-center">
+                    QQ号：
+                </label>
+                <div class="form-group col-8 offset-1">
+                    <input type="text" name="qq" id="qq" class="form-control" placeholder="{{ user.qq }}">
+                </div>
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary">提交</button>
+            </div>
+        </form>
+    </main>
+</body>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script>
+    $("#choise").click(function(){
+        $("#user_img").click();
+    });
+
+    $("#user_img").change(function () {
+        // 获取上传文件对象
+        var file = $(this)[0].files[0];
+        // 读取文件URL
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        // 阅读文件完成后触发的事件
+        reader.onload = function () {
+            // 读取的URL结果：this.result
+            $(".card-img-top").attr("src", this.result);
+        }
+    });
+</script>
+</html>

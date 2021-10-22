@@ -1,0 +1,36 @@
+{# 继承自 base.htnl 模板#}
+{% extends 'base.html' %}
+
+{# 引入静态文件 #}
+{% load static %}
+
+{# 网页标题 #}
+{% block title %}
+    日程安排
+{% endblock %}
+
+{# css 文件 #}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/shedule/shedule_list.css' %}">
+{% endblock %}
+
+{# 主区域内容 #}
+{% block content %}
+    <main class="main col-12">
+    {% for schedule in schedules %}
+        <div class="card text-white position-relative">
+            <img src="{% static 'image/work-1.jpg' %}" class="card-img" alt=" ">
+            <div class="card-img-overlay">
+              <h3 class="card-title">
+                  {{ schedule.act_title }} <small>{{ schedule.act_sponsor }}</small>
+                </h3>
+              <p class="card-text">{{ schedule.act_details|slice:'150' }}</p>
+              <p class="card-text text-right">{{ schedule.act_title }}</p>
+            </div>
+            <div class="card-footer text-right position-absolute">
+                <a href="{% url 'schedule:schedule_detail' schedule.id %}" class="btn btn-primary">活动详情</a>
+            </div>
+        </div>
+    {% endfor %}
+    </main>
+{% endblock %}

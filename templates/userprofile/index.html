@@ -1,0 +1,64 @@
+{# 继承自 base.htnl 模板#}
+{% extends 'base.html' %}
+
+{# 引入静态文件 #}
+{% load static %}
+
+{# 网页标题 #}
+{% block title %}
+    创学堂首页
+{% endblock %}
+
+{# 主区域内容 #}
+{% block content %}
+        <main class="main col-12">
+        <div class="list-group">
+            <a href="{% url 'schedule:schedule_list' %}" class="list-group-item list-group-item-action bg-warning active">
+              <h5>最新公告</h5>
+            </a>
+            {% for schedule in schedules %}
+                <a href="{% url 'schedule:schedule_detail' schedule.id %}" class="list-group-item list-group-item-action">
+                    {{ schedule.act_title }}
+                    <small class="float-right">{{ schedule.act_time }}</small>
+                </a>
+            {% endfor %}
+          </div>
+
+        <div class="list-group">
+            <a href="{% url 'article:article_list' %}" class="list-group-item list-group-item-action bg-primary active">
+              <h5>文章分享</h5>
+            </a>
+            {% for article in articles %}
+                <a href="{% url 'article:article_detail' article.id %}" class="list-group-item list-group-item-action">
+                    {{ article.art_title }}
+                    <small class="float-right">{{ article.art_author }}</small>
+                </a>
+            {% endfor %}
+          </div>
+
+          <div class="list-group">
+            <a href="{% url 'work:work_list' %}" class="list-group-item list-group-item-action bg-success active">
+              <h5>成员作品</h5>
+            </a>
+              {% for work in works %}
+                  <a href="{% url 'work:work_detail' work.id %}" class="list-group-item list-group-item-action">
+                      {{ work.work_title }}
+                      <small class="float-right">{{ work.work_author }}</small>
+                  </a>
+              {% endfor %}
+
+          </div>
+
+          <div class="list-group">
+            <a href="{% url 'schedule:schedule_list' %}" class="list-group-item list-group-item-action bg-danger active">
+              <h5>最新活动</h5>
+            </a>
+              {% for schedule in schedules %}
+                  <a href="{% url 'schedule:schedule_detail' schedule.id %}" class="list-group-item list-group-item-action">
+                      {{ schedule.act_title }}
+                      <small class="float-right">{{ schedule.act_created_time }}</small>
+                  </a>
+              {% endfor %}
+          </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f1909d4a-c46f-44bd-9ec8-4efdfa2f7004" name="Tencent" url="http://www.ibiren.cn">
+        <fileTransfer accessType="SFTP" host="106.53.246.237" port="22" sshConfigId="9c6ab558-95fc-4443-ab3c-eecf3d5afe31" sshConfig="root@106.53.246.237:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

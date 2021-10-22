@@ -1,0 +1,15 @@
+.main{
+    width: 65%;
+    margin-left: 330px;
+    padding: 10px 100px;
+}
+
+.main .container .col-12x img{
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 50%;
+}
+
+.main .container .col-12x img:first-child{
+    border-radius: 2%;
+}

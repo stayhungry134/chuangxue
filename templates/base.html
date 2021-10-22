@@ -1,0 +1,45 @@
+{#引入静态文件#}
+{% load static %}
+
+<!doctype html>
+{#设置网站主语言#}
+<html lang="zh-cn">
+<head>
+    {# 设置网站字符编码 #}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {# 网站预留标题位置 #}
+    <title> {% block title %}{% endblock %}</title>
+
+    {# 引入css文件 #}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-4.5.2/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'iconfont/iconfont.css' %}">
+    {# 预留css文件位置 #}
+    {% block css_file %}
+
+    {% endblock %}
+    {# 引入 js 文件 #}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'bootstrap-4.5.2/js/bootstrap.js' %}"></script>
+</head>
+<body>
+    {# 引入导航栏 #}
+    {% include 'header.html' %}
+
+    {# 引入左侧侧边栏 #}
+    {% include 'aside.html' %}
+
+    {# 填写主内容区域 #}
+    {% block content %}
+    
+    {% endblock %}
+
+    {# 引入右侧侧边栏 #}
+    {% include 'aside_right.html' %}
+</body>
+</html>

@@ -1,0 +1,9 @@
+.main{
+    margin: 100px auto;
+    margin-bottom: 0;
+    width: 80%;
+}
+
+.CodeMirror{
+    height: calc(75vh) !important;
+}

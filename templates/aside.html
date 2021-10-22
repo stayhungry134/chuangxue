@@ -1,0 +1,40 @@
+<aside class="aside">
+    <ul>
+        <li class="items">
+            <a class="{{ index_selected }}" href="{% url 'userprofile:index' %}">
+            <i class="iconfont icon-1"></i>
+                首页
+            </a> 
+        </li>
+        <li class="items">
+            <a class="{{ article_selected }}" href="{% url 'article:article_list' %}">
+                <i class="iconfont icon-wenzhang2"></i>
+                文章分享
+            </a> 
+        </li>
+        <li class="items">
+            <a class="{{ work_selected }}" href="{% url 'work:work_list' %}">
+                <i class="iconfont icon-zuopin"></i>
+                作品展示
+            </a> 
+        </li>
+        <li class="items">
+            <a class="{{ file_selected }}" href="">
+                <i class="iconfont icon-ziyuan"></i>
+                文件下载
+            </a> 
+        </li>
+        <li class="items">
+            <a class="{{ schedule_selected }}"  href="{% url 'schedule:schedule_list' %}">
+                <i class="iconfont icon-richeng"></i>
+                日程安排
+            </a> 
+        </li>
+        <li class="items">
+            <a class="{{ message_selected }}" href="{% url 'message:leave_message' %}">
+                <i class="iconfont icon-icon-test"></i>
+                留下足迹
+            </a> 
+        </li>
+    </ul>
+</aside>

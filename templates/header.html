@@ -1,0 +1,32 @@
+{# 引入静态文件 #}
+{% load static %}
+
+<header class="header">
+    <div class="logo">
+        <a href="{% url 'userprofile:index' %}">
+            <img src="{% static 'image/cxt-logo.png' %}" alt="创学堂">
+        </a>
+    </div>
+    <div class="cxt-qq add">
+        <img src="{% static 'image/cxt-qq.png' %}">
+    </div>
+    <nav class="float-right h-100">
+        <a href="https://jq.qq.com/?_wv=1027&k=NuJ33IMA" title="创学堂QQ群" id="cxtqq">
+            <i class="iconfont icon-qq"></i>
+        </a>
+        <a href="https://github.com/EthanWhite134" title="GitHub">
+            <i class="iconfont icon-github"></i>
+        </a>
+        <a href="" title="创学堂邮箱">
+            <i class="iconfont icon-youxiang"></i>
+        </a>
+        <a href="{% url 'userprofile:index' %}" title="返回">
+            <i class="iconfont icon-tuichu1"></i>
+        </a>
+        {% if request.session %}
+            <a href="{% url 'userprofile:user_edit' %}" title="个人信息">
+                {{ request.session.username }}
+            </a>
+        {% endif %}
+    </nav>
+</header>

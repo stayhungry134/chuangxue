@@ -1,0 +1,26 @@
+{# 引入静态文件 #}
+{% load static %}
+
+<div class="get-top">
+    <a href="#"><img src="{% static 'image/get-top.gif' %}" alt=""></a>
+</div>
+
+<aside class="aside-right">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{% url 'article:article_creat' %}">发表文章</a>
+        </li>
+        <li class="list-group-item">
+            <a href="{% url 'work:cre_work' %}">发表作品</a>
+        </li>
+        <li class="list-group-item">
+            <a href="{% url 'schedule:create_schedule' %}">发布活动</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Porta ac</a>
+        </li>
+        <li class="list-group-item">
+            <a href="">Vestibulum</a>
+        </li>
+      </ul>
+</aside>

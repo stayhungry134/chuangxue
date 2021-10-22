@@ -1,0 +1,71 @@
+{# 继承 user_base 页面#}
+{% extends 'userprofile/user_base.html' %}
+
+{# 加载 静态资源 #}
+{% load static %}
+
+{% block title %}
+    账号注册
+{% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/userprofile/register.css' %}">
+{% endblock %}
+
+{% block header_title %}
+    账号注册
+{% endblock %}
+
+{% block user_form %}
+    <form action="" method="post" class="right-infp">
+        {% csrf_token %}
+        <div class="right-infp-name">
+            <input type="text" name="student_id" id="student_id" placeholder="请输入学号" minlength="13" required value="" autocomplete="off">
+            {% for error in student_id.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            <li>{{ student_id_error }}</li>
+        </div>
+        <div class="right-infp-name">
+            <input type="text" name="username" id="username" minlength="3" placeholder="请输入用户名" required>
+            {% for error in form.username.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            <li>{{ username_error }}</li>
+        </div>
+        <div class="right-infp-name">
+            <input type="password" name="password" id="password" minlength="6" placeholder="请输入密码" autocomplete="off" required>
+            {% for error in form.password.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </div>
+        <div class="right-infp-name">
+            <input type="password" name="re_password" id="re_password" minlength="6" placeholder="请再次输入密码" autocomplete="off" required>
+            {% for error in form.re_password.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </div>
+        <div class="right-infp-name">
+            <input type="text" name="email" id="email" placeholder="请输入邮箱" required>
+            {% for error in form.email.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            <li>{{ email_error }}</li>
+        </div>
+        <div class="right-infp-name">
+            <input type="text" name="invitation_code" id="invitation_code" placeholder="请输入邀请码" autocomplete="off" required>
+            {% for error in form.invitation_code.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </div>
+
+        <div class="help-link">
+            <a class="left" href="{% url 'userprofile:retrieve' %}">找回密码</a>
+            <a class="right" href="{% url 'userprofile:login' %}">返回登录</a>
+        </div>
+
+        <div class="right-infp-btn">
+            <button class="btn">注册</button>
+        </div>
+    </form>
+{% endblock %}

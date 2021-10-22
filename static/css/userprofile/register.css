@@ -1,0 +1,31 @@
+.content .content-right{
+    height: 7.2rem;
+}
+.right-infp-name{
+    margin-bottom: 0.25rem;
+}
+.help-link{
+    width: 100%;
+    margin-top: -15px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    line-height: 15px;
+    height: 15px;
+}
+
+.help-link a{
+    text-decoration: none;
+    color: #00eaff;
+}
+
+.help-link a:hover{
+    color: #2598be;
+}
+
+.help-link .left{
+    float: left;
+}
+
+.help-link .right{
+    float: right;
+}

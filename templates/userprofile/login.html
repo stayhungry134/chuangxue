@@ -1,0 +1,46 @@
+{# 继承 user_base 页面#}
+{% extends 'userprofile/user_base.html' %}
+
+{# 加载 静态资源 #}
+{% load static %}
+
+{% block title %}
+    创学堂登录
+{% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/userprofile/login.css' %}">
+{% endblock %}
+
+{% block header_title %}
+    创学堂登录
+{% endblock %}
+
+{% block user_form %}
+            <form action="" method="post" class="right-infp">
+            {% csrf_token %}
+                <div class="right-infp-name">
+                    <input type="text" name="student_id" placeholder="请输入学号" minlength="13" maxlength="13" required="" value="" autocomplete="off">
+                    <li>{{ student_id_error }}</li>
+                    <li>{{ msg }}</li>
+                </div>
+                <div class="right-infp-name">
+                    <input type="password" name="password" placeholder="请输入密码" autocomplete="off">
+                    <li>{{ password_error }}</li>
+                </div>
+                <div class="right-infp-name verification">
+                    <input type="text" name="invitation" placeholder="请输入验证码" autocomplete="off">
+                </div>
+
+                <div class="help-link">
+                    <a class="left" href="{% url 'userprofile:register' %}">注册账号</a>
+                    <a class="right" href="{% url 'userprofile:retrieve' %}">找回密码</a>
+                </div>
+                <div class="message">
+                    {{ message }}
+                </div>
+                <div class="right-infp-btn">
+                    <button class="btn">登录</button>
+                </div>
+            </form>
+{% endblock %}

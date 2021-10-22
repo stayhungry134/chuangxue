@@ -1,0 +1,70 @@
+html, body{
+    height: 100%;
+    background: #86e1d0;
+}
+
+
+.header{
+    z-index: 3;
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+    background-color: #d1e5a6;
+    padding-right: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.header .logo{
+    z-index: 4;
+    width: 240px;
+    height: 60px;
+    background: #fce09a;
+    text-align: center;
+    border-bottom: #d1e5a6 solid 2px ;
+}
+
+.header .logo img{
+    width: 180px;
+}
+
+.header .float-right{
+    margin-top: -60px;
+}
+
+.header .float-right a{
+    display: inline-block;
+    margin: 15px;
+    color: #cbaad7;
+    text-decoration: none;
+}
+
+.header .float-right a:hover{
+    color: #87cefa;
+}
+
+.header .float-right a i{
+    font-size: 20px;
+}
+
+.header .cxt-qq{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    padding: 10% 40%;
+    text-align: center;
+    background: rgba(0, 0, 0, .4);
+}
+
+.header .cxt-qq img{
+    width: 300px;
+}
+
+
+.header .add{
+    display: none;
+}

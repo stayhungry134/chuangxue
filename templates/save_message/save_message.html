@@ -1,0 +1,46 @@
+{# 继承自 base.htnl 模板#}
+{% extends 'base.html' %}
+
+{# 引入静态文件 #}
+{% load static %}
+
+{# 网页标题 #}
+{% block title %}
+    文章列表
+{% endblock %}
+
+{# css 文件 #}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/save_message/save_message.css' %}">
+{% endblock %}
+
+{# 主区域内容 #}
+{% block content %}
+    <main class="main col-12 container">
+        <h1 class="col-12 mt-4 mb-4 text-center offset-md-1">留下你想对创学堂说的话吧！</h1>
+
+        <form method="post" action="." class="mb-4 col-11 offset-md-1">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea type="text" class="form-control" id="msg_body" name="msg_body" rows="5" placeholder="请在这里填写留言内容"></textarea>
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary">提交留言</button>
+            </div>
+        </form>
+        {% for message in messages %}
+            <div class="card mb-4 col-11 offset-md-1">
+                <div class="card-header col-10 alert alert-secondary  position-relative">
+                    <img class="card-img rounded-circle position-absolute" src="{% static 'image/user.png' %}" alt="">
+                    <span>{{ message.msg_user }} 说:</span>
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-text">{{ message.msg_body }}</p>
+                </div>
+                <div class="card-footer text-right">
+                    {{ message.msg_time }}
+                </div>
+            </div>
+        {% endfor %}
+    </main>
+{% endblock %}

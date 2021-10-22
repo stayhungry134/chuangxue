@@ -1,0 +1,37 @@
+{# 继承自 base.htnl 模板#}
+{% extends 'base.html' %}
+
+{# 引入静态文件 #}
+{% load static %}
+
+{# 网页标题 #}
+{% block title %}
+    文章列表
+{% endblock %}
+
+{# css 文件 #}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/work_show/work_list.css' %}">
+{% endblock %}
+
+{# 主区域内容 #}
+{% block content %}
+    <main class="main col-12">
+    {% for work in works %}
+        <article class="card col-12">
+            <header class="card-header overflow-hidden">
+                <img src="{% static 'image/work-1.jpg' %}" alt="" class="card-img-top">
+                <h3 class="card-title">
+                    {{ work.work_title }} <small> {{ work.work_author }}</small>
+                </h3>
+            </header>
+            <div class="card-body">
+                <p class="card-text">{{ work.work_description|slice:'100' }}</p>
+            </div>
+            <div class="card-footer text-right">
+                <a href="{% url 'work:work_detail' work.id %}" class="btn btn-primary">查看详情</a>
+            </div>
+        </article>
+    {% endfor %}
+    </main>
+{% endblock %}

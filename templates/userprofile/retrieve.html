@@ -1,0 +1,44 @@
+{# 继承 user_base 页面#}
+{% extends 'userprofile/user_base.html' %}
+
+{# 加载 静态资源 #}
+{% load static %}
+
+{% block title %}
+    找回密码
+{% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/userprofile/retrieve.css' %}">
+{% endblock %}
+
+{% block header_title %}
+    找回密码
+{% endblock %}
+
+{% block user_form %}
+    <form action="" method="post" class="right-infp">
+        {% csrf_token %}
+        <div class="right-infp-name">
+            <input type="text" name="student_id" placeholder="请输入学号" minlength="13" maxlength="13" required="" value="" autocomplete="off">
+        </div>
+        <div class="right-infp-name">
+            <input type="text" name="email" placeholder="请输入邮箱地址" autocomplete="off">
+        </div>
+        <div class="right-infp-name">
+            <input type="password" name="password" placeholder="请输入新密码" autocomplete="off">
+        </div>
+        <div class="right-infp-name">
+            <input type="password" name="password1" placeholder="请再次输入新密码" autocomplete="off">
+        </div>
+
+        <div class="help-link">
+            <a class="left" href="{% url 'userprofile:register' %}">注册账号</a>
+            <a class="right" href="{% url 'userprofile:login' %}">返回登录</a>
+        </div>
+
+        <div class="right-infp-btn">
+            <button class="btn">提交</button>
+        </div>
+    </form>
+{% endblock %}

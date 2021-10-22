@@ -1,0 +1,41 @@
+
+.main{
+    width: 65%;
+    margin-left: 330px;
+    padding: 10px 100px;
+}
+
+.main .card{
+    padding: 10px;
+    margin-top: 60px;
+}
+
+.main .card-header{
+    margin-left: 85px;
+}
+
+.main .card-header::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: -9px;
+    top: 20px;
+    background: #e2e3e5;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.main .card-header .card-img{
+    width: 60px;
+    height: 60px;
+    left: -85px;
+    top: 0;
+}
+
+.main .card-header span{
+    font-size: 1.2em;
+}
